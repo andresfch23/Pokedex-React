@@ -4,7 +4,7 @@ module.exports = {
     entry: './src/app.js',
     output: {
         path: path.join(__dirname, 'public'),
-        filename: 'bundle.js',
+        filename: 'bundle.js'
     },
     module: {
         rules: [
@@ -20,11 +20,21 @@ module.exports = {
                     'css-loader',
                     'sass-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                    {
+                        loader: "url-loader",
+                    }
+                ]
             }
         ]
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        open: true, 
+        historyApiFallback: true,
     }
 };

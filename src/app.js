@@ -1,8 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppRouter from './router/app-router';
+import AppRouter from './router/App-router';
+import { getPokemons } from './requests/pokemons';
+import 'normalize.css/normalize.css';
+import './styles/styles.scss';
 
-ReactDOM.render(<h1>Mi alma</h1>,document.getElementById('app'));
+getPokemons('pikachu');
+
+ReactDOM.render(<AppRouter />, document.getElementById('app'));
 
 // HOME
 // 404
