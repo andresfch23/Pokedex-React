@@ -1,3 +1,110 @@
 .home {
-    background-image: url('../../assets/background/double-bubble.png');
+    font-family: Arial, Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 100px 150px 100px auto;
+    grid-template-areas:
+        ". . . . . . . ."
+        ". . left left right right . ."
+        ". . . . . . . ."
+        ". cards cards cards cards cards cards .";
+    align-items: stretch;
+    justify-items: stretch;
+    padding-bottom: 40px;
+
+    &-loading {
+        grid-area: cards;
+        place-self: center;
+        height: 200px;
+    }
+
+    &__search {
+        grid-area: left;
+        background-color: hsl(0°, 0%, 19%);
+        display: inline-grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 'center';
+        align-items: center;
+        justify-items: center;
+
+        &-input {
+            grid-area: center;
+            width: 81%;
+            height: 50px;
+            margin: 0 20px;
+            border-radius: 15px;
+            border: 3px solid black;
+            padding-left: 10px;
+        }
+
+        &-button {
+            grid-area: right;
+            width: 60px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid red;
+            cursor: pointer;
+        }
+
+        &-icon {
+            width: 20px;
+        }
+    }
+
+    &__description {
+        grid-area: right;
+        background-color: hsl(0°, 0%, 19%);
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        color: white;
+    }
+}
+
+.pokemons-container {
+    grid-area: cards;
+    background-color: white;
+    padding: 30px 0 0;
+    height: 100%;
+    transition: all 2s;
+
+    &-empty {
+        height: 500px;
+        transition: all 2s;
+    }
+
+    &-ready {
+        transition: all 2s;
+    }
+}
+
+.pokemon-card {
+    display: inline-block;
+    width: 25%;
+    margin-bottom: 40px;
+
+    &__title {
+        font-size: 25px;
+        text-transform: capitalize;
+    }
+
+    &__image {
+        width: 100%;
+        background-color: hsl(0, 0%, 90%);
+        border-radius: 15px;
+
+        &-container {
+            width: 85%;
+            margin: 0 auto;
+        }
+    }
+
+    &__number {
+        color: gray;
+    }
+
+    &__info {
+        width: 85%;
+        margin-left: 40px;
+    }
 }

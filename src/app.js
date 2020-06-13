@@ -1,14 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { addPokemons } from './redux/actions/pokemons';
+import { addTypes } from './redux/actions/types';
 import AppRouter from './router/App-router';
-import { getPokemons } from './requests/pokemons';
+import configureStore from './redux/store/store';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-getPokemons('pikachu');
+const store = configureStore();
 
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+// Fetching the initial data and type of pokemons
+// store.dispatch(addPokemons());
+store.dispatch(addTypes());
 
-// HOME
-// 404
-// pokemon/id
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
+
+ReactDOM.render(jsx, document.getElementById('app'));

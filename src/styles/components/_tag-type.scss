@@ -1,0 +1,104 @@
+.type {
+    &__container {
+        display: inline-block;
+        width: 40%;
+    }
+
+    &__text {
+        margin-right: 8%;
+        padding: 1% 10%;
+        border-radius: 5px;
+        display: block;
+        text-align: center;
+        font-size: 15px;
+
+        &--normal {
+            background-color: hsl(0, 0%, 65%);
+        }
+
+        &--fighting {
+            background-color: #d56723;
+            color: white;
+        }
+
+        &--flying {
+            background: linear-gradient(180deg, #3dc7ef 50%, #a6a6a6 61%);
+        }
+
+        &--poison {
+            background-color: #b97fc9;
+            color: white;
+        }
+
+        &--ground {
+            background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+        }
+
+        &--rock {
+            background-color: #a38c21;
+            color: white;
+        }
+
+        &--bug {
+            background-color: #729f3f;
+            color: white;
+        }
+
+        &--ghost {
+            background-color: #7b62a3;
+            color: white;
+        }
+
+        &--steel {
+            background-color: #9eb7b8;
+        }
+
+        &--fire {
+            background-color: #fd7d24;
+            color: white;
+        }
+
+        &--water {
+            background-color: #4592c4;
+            color: white;
+        }
+
+        &--grass {
+            background-color: #9bcc50;
+        }
+
+        &--electric {
+            background-color: #eed535;
+        }
+
+        &--psychic {
+            background-color: #f366b9;
+            color: white;
+        }
+
+        &--ice {
+            background-color: #51c4e7;
+        }
+
+        &--dragon {
+            background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);;
+        }
+
+        &--dark {
+            background-color: #707070;
+            color: white;
+        }
+
+        &--fairy {
+            background-color: #fdb9e9;
+        }
+
+        &--unknown {
+            background-color: hsl(0, 0%, 65%);
+        }
+
+        &--shadow {
+            background-color: hsl(0, 0%, 65%);
+        }
+    }
+}
