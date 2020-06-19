@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Pokemon from '../components/Pokemon';
 import Home from '../components/Home';
 import Header from '../components/Header';
-import NotFoundPage from '../components/NotFoundPage';
+import NotFound from '../components/NotFound';
 import { addPokemons } from '../redux/actions/pokemons';
 import { addTypes } from '../redux/actions/types';
 
@@ -20,7 +20,7 @@ class App extends React.Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/pokemon/:id" component={Pokemon} />
-                    <Route component={NotFoundPage} />
+                    <Route component={NotFound} />
                 </Switch>
             </div>
         )

@@ -1,0 +1,35 @@
+.not-found {
+    font-size: 40px;
+    text-align: center;
+    margin: 50px 0;
+
+    & h2 {
+        margin: 40px 0 18px 0;
+        color: #e60000;
+    }
+
+    & span {
+        display: inline-block;
+        font-size: 200px;
+        margin: 0 25px;
+    }
+
+    &__image {
+        width: 170px;
+
+        &-container {
+            display: inline-block;
+        }
+    }
+
+    &__text {
+        margin: 0 0 42px;
+    }
+
+    &__button {
+        border-radius: 30px;
+        padding: 5px 20px;
+        background-color: #e60000;
+        color: white;
+    }
+}

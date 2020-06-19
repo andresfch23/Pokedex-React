@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from './Image';
 import TagType from './TagType';
+import { removeHyphen } from '../helpers';
 
 const PokemonCard = ({ info, onClickPokemon }) => {
     const { 
@@ -12,7 +13,8 @@ const PokemonCard = ({ info, onClickPokemon }) => {
         },
         id,
         types,
-        image
+        image,
+        formatedNumber
     } = info;
 
     return (
@@ -26,12 +28,12 @@ const PokemonCard = ({ info, onClickPokemon }) => {
                 onClick={() => onClickPokemon(info)}
             />
             <div className={'pokemon-card__info'}>
-                <span className={'pokemon-card__number'}>{`# ${id}`}</span>
-                <h1 className='pokemon-card__title'>{name}</h1>
+                <span className={'pokemon-card__number'}>{`# ${formatedNumber}`}</span>
+                <h1 className='pokemon-card__title'>{removeHyphen(name)}</h1>
 
                 {types && types.map(each => {
                     const { type: { name } } = each;
-                    return <TagType type={name} key={name} />
+                    return <TagType typePok={name} key={name} type="general" />
                 })}
             </div>
 

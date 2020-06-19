@@ -1,0 +1,150 @@
+@mixin title-types {
+    font-size: 25px;
+    font-weight: lighter;
+    margin-top: 30px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(720deg); }
+}
+
+.pokemon {
+    margin: 3%;
+    padding: 0 2% 4% 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        ". . title title . ."
+        "image image image info info info"
+        ". chart chart chart chart .";
+    background-color: white;
+    border-radius: 20px;
+
+    &__title {
+        text-align: center;
+        text-transform: capitalize;
+        font-weight: normal;
+        font-size: 48px;
+        margin: 80px 0;
+        grid-area: title;
+
+        &--number {
+            color: gray;
+            margin-left: 10px;
+        }
+    }
+
+    &__image {
+        background-color: #e6e6e6;
+        border-radius: 20px;
+        width: 100%;
+
+        &-container {
+            grid-area: image;
+            padding-right: 6%;
+        }
+    }
+
+    &__info {
+        grid-area: info;
+        display: grid;
+        grid-template-areas: 
+            "info info info"
+            "type type type"
+            "weakness weakness weakness"
+            ;
+        grid-template-rows: auto auto auto;
+
+        &-item {
+            display: inline-block;
+            width: 33%;
+            vertical-align: top;
+
+            & span {
+                margin-left: 4%;
+                font-size: 20px;
+                color: black;
+            }
+        }
+
+        &-title {
+            color: white;
+            font-size: 20px;
+        }
+
+        &-container {
+            grid-area: info;
+            padding: 0 6% 4%;
+            background-color: cornflowerblue;
+            border-radius: 10px;
+        }
+    }
+
+    &__description {
+        grid-area: description;
+        font-size: 20px;
+        margin-top: 5%;
+        color: black;
+    }
+
+    &__types {
+        grid-area: type;
+
+        &-title {
+            @include title-types;
+        }
+    }
+
+    &__weaknesses {
+        grid-area: weakness;
+        &-title {
+            @include title-types;
+            margin-top: 20px;
+        }
+    }
+
+    &__ability {
+        display: block;
+        text-transform: capitalize;
+        margin-top: 7%;
+    }
+
+    &__loading {
+        font-size: 100px;
+        text-align: center;
+        margin: 84px 0 84px 3%;
+
+        & span {
+            display: inline-block;
+        }
+
+        &-image {
+            animation: spin 1.5s cubic-bezier(.17,.67,.83,.67);
+            animation-iteration-count: infinite;
+            width: 90px;
+
+            &-container {
+                display: inline-block;
+            }
+        }
+    }
+
+    &__chart {
+        grid-area: chart;
+        place-self: center;
+
+        & text {
+            fill: black;
+        }
+
+        & line {
+            stroke: black;
+        }
+
+        & tspan {
+            text-transform: capitalize;
+        }
+    }
+}

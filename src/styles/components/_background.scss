@@ -1,0 +1,249 @@
+.background {
+    &--normal {
+        background-color: hsl(0, 0%, 65%);
+        &-polygon {
+            & polygon {
+                stroke: hsl(0, 0%, 65%);
+                fill: hsl(0, 0%, 65%);
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--fighting {
+        background-color: #d56723;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #d56723;
+                fill: #d56723;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--flying {
+        background: linear-gradient(180deg, #3dc7ef 50%, #a6a6a6 61%);
+
+        &-polygon {
+            & polygon {
+                stroke: #3dc7ef;
+                fill: #3dc7ef;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--poison {
+        background-color: #b97fc9;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #b97fc9;
+                fill: #b97fc9;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--ground {
+        background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+
+        &-polygon {
+            & polygon {
+                stroke: #f7de3f;
+                fill: #f7de3f;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--rock {
+        background-color: #a38c21;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #a38c21;
+                fill: #a38c21;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--bug {
+        background-color: #729f3f;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #729f3f;
+                fill: #729f3f;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--ghost {
+        background-color: #7b62a3;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #7b62a3;
+                fill: #7b62a3;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--steel {
+        background-color: #9eb7b8;
+
+        &-polygon {
+            & polygon {
+                stroke: #9eb7b8;
+                fill: #9eb7b8;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--fire {
+        background-color: #fd7d24;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #fd7d24;
+                fill: #fd7d24;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--water {
+        background-color: #4592c4;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #4592c4;
+                fill: #4592c4;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--grass {
+        background-color: #9bcc50;
+
+        &-polygon {
+            & polygon {
+                stroke: #9bcc50;
+                fill: #9bcc50;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--electric {
+        background-color: #eed535;
+
+        &-polygon {
+            & polygon {
+                stroke: #eed535;
+                fill: #eed535;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--psychic {
+        background-color: #f366b9;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #f366b9;
+                fill: #f366b9;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--ice {
+        background-color: #51c4e7;
+
+        &-polygon {
+            & polygon {
+                stroke: #51c4e7;
+                fill: #51c4e7;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--dragon {
+        background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+
+        &-polygon {
+            & polygon {
+                stroke: #f16e57;
+                fill: #f16e57;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--dark {
+        background-color: #707070;
+        color: white;
+        
+        &-polygon {
+            & polygon {
+                stroke: #707070;
+                fill: #707070;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--fairy {
+        background-color: #fdb9e9;
+
+        &-polygon {
+            & polygon {
+                stroke: #fdb9e9;
+                fill: #fdb9e9;
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--unknown {
+        background-color: hsl(0, 0%, 65%);
+
+        &-polygon {
+            & polygon {
+                stroke: hsl(0, 0%, 65%);
+                fill: hsl(0, 0%, 65%);
+                fill-opacity: 0.6;
+            }
+        }
+    }
+
+    &--shadow {
+        background-color: hsl(0, 0%, 65%);
+
+        &-polygon {
+            & polygon {
+                stroke: hsl(0, 0%, 65%);
+                fill: hsl(0, 0%, 65%);
+                fill-opacity: 0.6;
+            }
+        }
+    }
+}

@@ -1,40 +1,67 @@
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(720deg); }
+}
+
 .home {
-    font-family: Arial, Helvetica, sans-serif;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 100px 150px 100px auto;
+    grid-template-rows: 200px 150px auto;
     grid-template-areas:
-        ". . . . . . . ."
-        ". . left left right right . ."
-        ". . . . . . . ."
+        "left left left left right right right right"
+        ". . loader loader loader loader . ."
         ". cards cards cards cards cards cards .";
     align-items: stretch;
     justify-items: stretch;
     padding-bottom: 40px;
 
     &-loading {
-        grid-area: cards;
+        grid-area: loader;
         place-self: center;
-        height: 200px;
+        width: 70%;
+        font-size: 70px;
+        text-align: center;
+        margin: 28px 0;
+
+        & span {
+            display: inline-block;
+        }
+
+        &-image {
+            animation: spin 1.5s cubic-bezier(.17,.67,.83,.67);
+            animation-iteration-count: infinite;
+            width: 66px;
+
+            &-container {
+                display: inline-block;
+            }
+        }
     }
 
     &__search {
         grid-area: left;
-        background-color: hsl(0°, 0%, 19%);
+        background-color: hsla(0,0%,1.2%, .8);
         display: inline-grid;
         grid-template-columns: 1fr;
         grid-template-areas: 'center';
         align-items: center;
-        justify-items: center;
+        justify-items: end;
 
         &-input {
             grid-area: center;
-            width: 81%;
+            width: 60%;
             height: 50px;
             margin: 0 20px;
             border-radius: 15px;
             border: 3px solid black;
-            padding-left: 10px;
+            font-size: 26px;
+            text-align: center;
+
+            &::placeholder {
+                color: hsl(0, 0%, 73%);
+                font-style: italic;
+                font-size: 23px;
+            }
         }
 
         &-button {
@@ -53,28 +80,47 @@
 
     &__description {
         grid-area: right;
-        background-color: hsl(0°, 0%, 19%);
+        background-color: hsla(0,0%,1.2%, .8);
         display: grid;
         align-items: center;
         justify-items: center;
         color: white;
+        padding-right: 5%;
+
+        &-container {
+            width: 65%;
+            height: 65%;
+            background-color: coral;
+            border-radius: 15px;
+
+            & p {
+                font-size: 19px;
+                margin: 4%;
+                line-height: 30px;
+            }
+        }
     }
 }
 
 .pokemons-container {
     grid-area: cards;
     background-color: white;
-    padding: 30px 0 0;
-    height: 100%;
-    transition: all 2s;
+    padding: 10px 0 0;
+    transition: all 1s;
+    position: relative;
+    opacity: 0;
 
     &-empty {
-        height: 500px;
-        transition: all 2s;
+        height: 0;
+        opacity: 0;
+        transition: all 1s;
     }
 
     &-ready {
-        transition: all 2s;
+        height: 100%;
+        width: 100%;
+        transition: all 1s;
+        opacity: 1;
     }
 }
 

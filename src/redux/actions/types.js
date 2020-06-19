@@ -13,13 +13,7 @@ export const addTypes = () => {
 
         fetchTypePokemons()
         .then(res => {
-
-            const names = res.reduce((acc, type) => {
-                acc.push(type.name);
-                return acc
-            }, []);
-
-            dispatch(addTypesSuccess(names));
+            dispatch(addTypesSuccess(res));
         })
         .catch(error => {
             dispatch(addTypesFailure(error))

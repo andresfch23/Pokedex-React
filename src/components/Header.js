@@ -11,6 +11,7 @@ const Header = () => (
             src={PokemonLogo}
             optionalClassContainer={'header__container header__container--center'}
             optionalClassImage={'header__image header__image--center'}
+            linkTo='/'
         />
 
         {headerImages.map((image, idx) => {
@@ -19,7 +20,6 @@ const Header = () => (
             return (
                 <Image
                     src={image}
-                    idx={idx}
                     optionalClassContainer={classNameImage}
                     optionalClassImage={'header__image'}
                     key={idx}

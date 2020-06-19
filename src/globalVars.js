@@ -1,8 +1,6 @@
 export const noSpecialCharacters = new RegExp('[^a-zA-Z0-9]', 'gm');
 
-export const noZeroatBegin = new RegExp('^(0\\d*)$');
-
-export const combinedRegExp = new RegExp(noSpecialCharacters.source + "|" + noZeroatBegin.source);
+export const noZeroatBegin = new RegExp('^(0*)');
 
 export const actionTypesPokemon = {
     ADD_POKEMONS_SUCCESS: 'ADD_POKEMONS_SUCCESS',

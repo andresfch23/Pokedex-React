@@ -1,12 +1,12 @@
 import React from 'react';
 
-const TagType = ({ type }) => {
+const TagType = ({ typePok, type }) => {
     return (
-        <div className='type__container'>
+        <div className={`type__container-${type}`}>
             <span
-                className={`type__text ${type ? `type__text--${type}` : '' }`}
+                className={`type__text type__text-${type} ${typePok ? `background--${typePok}` : '' }`}
             >
-                {type}
+                {typePok}
             </span>
         </div>
     )
