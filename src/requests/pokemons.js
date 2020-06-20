@@ -4,6 +4,7 @@ import { formatNumber } from '../helpers';
 
 export const fetchInitialInfo = async () => {
     const response = await axios.get('https://pokeapi.co/api/v2/pokedex/1/');
+
     const { data: { pokemon_entries } } = response;
 
     return pokemon_entries;
@@ -90,6 +91,6 @@ export const fetchInfoPokemon = async (urlInfo, typeImg) => {
         
         return infoPokemon;
     } catch(error) {
-        console.log(error)
+        console.error(error)
     }
 }

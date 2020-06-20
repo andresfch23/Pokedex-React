@@ -55,6 +55,17 @@ export const filterExistentPokemons = (pokemons, text) => {
             return true;
         }
     });
-
-    console.log(filteredPokemons);
 }
+
+export const abbreviateWord = text => {
+    const matchWord = 'special-';
+    let word;
+
+    if (text.includes(matchWord)) {
+        word = text.replace(matchWord, 'Sp.');
+    } else {
+        word = text;
+    }
+
+    return word;
+} 

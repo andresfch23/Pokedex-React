@@ -93,10 +93,13 @@ class Home extends Component {
     };
 
     render() {
-        const classNamecont = this.state.searchVal.length <= 2 ?
+        const classNamecont =
+            this.state.searchVal.length <= 2 ?
             'pokemons-container-empty' :
-            this.props.filteredPokemons.length > 0 ? 'pokemons-container-ready':
-            this.state.notFound &&'notFound';
+            this.props.filteredPokemons.length > 0 ?
+            'pokemons-container-ready':
+            this.state.notFound &&
+            'pokemons-container-notFound';
 
         return (
             <div className="home">
@@ -133,9 +136,7 @@ class Home extends Component {
                             ))}
                         </div>
                     ) : this.state.notFound ? (
-                        <div>
-                            <span>We couldn´t find coincidences for a Pokemon with this search {`'${this.state.searchVal}'`}</span>
-                        </div>
+                        <span className="pokemons__notFound-text">We couldn´t find coincidences for a Pokemon with this search: {`'${this.state.searchVal}'`}</span>
                     ) : this.state.error && <span>An error ocurred</span>}
                 </div>
             </div>

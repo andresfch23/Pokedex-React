@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { fetchInfoPokemon, fetchImage } from '../requests/pokemons';
 import { connect } from 'react-redux';
-import { removeHyphen, formatText, chooseWeaknesses } from '../helpers';
+import { removeHyphen, formatText, chooseWeaknesses, abbreviateWord } from '../helpers';
 import TagType from './TagType';
 import Image from './Image';
 import Loader from './Loader';
@@ -69,7 +69,8 @@ class Pokemon extends Component {
         if (stats) {
             const finalStats = stats.reduce((acc, each) => {
                 const { base_stat, stat: { name } } = each;
-                const completeName = `${name} (${base_stat})`;
+                const abbreviateStat = abbreviateWord(name);
+                const completeName = `${abbreviateStat} (${base_stat})`;
 
                 acc.push({ base_stat, name: completeName });
     
@@ -82,7 +83,7 @@ class Pokemon extends Component {
 
     render() {
         const {
-            name,
+            species,
             image,
             formatedNumber,
             complementInfo,
@@ -111,18 +112,18 @@ class Pokemon extends Component {
                     (
                         <div className='pokemon'>
                             <h1 className='pokemon__title'>
-                                {name} <span className='pokemon__title--number'>{`#${formatedNumber}`}</span>
+                                {removeHyphen(species.name)} <span className='pokemon__title--number'>{`#${formatedNumber}`}</span>
                             </h1>
                             <Image
                                 src={image}
-                                alt={name}
+                                alt={species.name}
                                 optionalClassImage='pokemon__image'
                                 optionalClassContainer='pokemon__image-container'
                             />
                             <div className='pokemon__info'>
 
                                 <div className={`pokemon__info-container ${types[0] ? `background--${types[0].type.name}` : ''}`}>    
-                                    <p className='pokemon__description'>{formatText(complementInfo, name)}</p>
+                                    <p className='pokemon__description'>{formatText(complementInfo, species.name)}</p>
 
                                     {abilities.length > 0 && (
                                         <div className='pokemon__info-item'>
@@ -167,7 +168,7 @@ class Pokemon extends Component {
                                 <Chart
                                     data={finalStats}
                                     name={name}
-                                    className={`pokemon__chart background--${types[0].type.name}-polygon`}
+                                    className={`pokemon__chart-wrapper background--${types[0].type.name}-polygon`}
                                 />
                             )}
                         </div>

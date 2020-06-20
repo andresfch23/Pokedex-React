@@ -15,7 +15,7 @@ const NotFound = ({ type='Page'  }) => (
             4
         </span>
         <Image 
-            src={pokeBallImage}
+            src={sadPikachu}
             optionalClassContainer={'not-found__image-container'}
             optionalClassImage={'not-found__image'}
             alt='pokeball image'

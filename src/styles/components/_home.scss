@@ -6,7 +6,7 @@
 .home {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 200px 150px auto;
+    grid-template-rows: 200px 120px auto;
     grid-template-areas:
         "left left left left right right right right"
         ". . loader loader loader loader . ."
@@ -18,10 +18,9 @@
     &-loading {
         grid-area: loader;
         place-self: center;
-        width: 70%;
         font-size: 70px;
         text-align: center;
-        margin: 28px 0;
+        margin: 20px 0px 0 40px;
 
         & span {
             display: inline-block;
@@ -109,6 +108,15 @@
     transition: all 1s;
     position: relative;
     opacity: 0;
+
+    &-notFound {
+        opacity: 1;
+        text-align: center;
+        font-size: 30px;
+        border: 5px solid red;
+        padding: 15px;
+        border-radius: 10px;
+    }
 
     &-empty {
         height: 0;
