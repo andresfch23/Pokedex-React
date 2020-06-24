@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Image from './Image';
-import pokeBallImage from '../assets/images/pokeball.png';
 import sadPikachu from '../assets/images/sad.png';
 
 const NotFound = ({ type='Page'  }) => (

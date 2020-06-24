@@ -69,3 +69,11 @@ export const abbreviateWord = text => {
 
     return word;
 } 
+
+export const autoScroll = () => {
+    setTimeout(() => {
+        window.scroll({
+            top: 280
+        });
+    }, 100);
+}

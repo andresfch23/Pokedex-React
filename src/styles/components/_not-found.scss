@@ -38,4 +38,48 @@
         color: white;
         font-size: 25px;
     }
+
+    @media only screen and (max-width: 768px) {
+        & h2 {
+            margin: 40px 0;
+        }
+
+        & span {
+            font-size: 150px;
+            margin: 0 15px;
+        }
+
+        &__image {
+            width: 100px;
+            padding-top: 25px;
+
+            &-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        font-size: 35px;
+
+        & h2 {
+            margin: 40px 0;
+        }
+
+        & span {
+            font-size: 100px;
+            margin: 0 15px;
+        }
+
+        &__image {
+            width: 75px;
+            padding-top: 10px;
+
+            &-container {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    }
 }

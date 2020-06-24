@@ -4,12 +4,20 @@
         &-general {
             display: inline-block;
             width: 40%;
+
+            @media only screen and (min-width: 481px) and (max-width: 992px) {
+                width: 44%;
+            }
         }
 
         &-detail {
             display: inline-block;
             width: 25%;
             margin-bottom: 2%;
+
+            @media only screen and (max-width: 480px) {
+                width: 33%;
+            }
         }
     }
 

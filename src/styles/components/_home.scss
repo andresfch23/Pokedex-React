@@ -15,12 +15,38 @@
     justify-items: stretch;
     padding-bottom: 40px;
 
+    @media only screen and (max-width: 768px) {
+        grid-template-areas:
+            "left left left left right right right right"
+            "loader loader loader loader loader loader loader loader"
+            ". cards cards cards cards cards cards .";
+    }
+
+    @media only screen and (max-width: 480px) {
+        grid-template-rows: 100px auto 120px auto;
+        grid-template-areas:
+        "left left left left left left left left"
+        "right right right right right right right right"
+        "loader loader loader loader loader loader loader loader"
+        ". cards cards cards cards cards cards .";
+    }
+
+
     &-loading {
         grid-area: loader;
         place-self: center;
         font-size: 70px;
         text-align: center;
         margin: 20px 0px 0 40px;
+
+        @media only screen and (max-width: 480px) {
+           font-size: 50px;
+           margin: 0 0 0 20px;
+
+           &-image {
+               width: 45px;
+           }
+        }
 
         & span {
             display: inline-block;
@@ -30,6 +56,10 @@
             animation: spin 1.5s cubic-bezier(.17,.67,.83,.67);
             animation-iteration-count: infinite;
             width: 66px;
+
+            @media only screen and (max-width: 320px) {
+                width: 45px;
+            }
 
             &-container {
                 display: inline-block;
@@ -55,11 +85,36 @@
             border: 3px solid black;
             font-size: 26px;
             text-align: center;
-
+        
+            
             &::placeholder {
                 color: hsl(0, 0%, 73%);
                 font-style: italic;
                 font-size: 23px;
+            }
+
+            @media only screen and (max-width: 992px) {
+                width: 80%;
+            }
+
+            @media only screen and (max-width: 768px) {
+                width: 90%;
+                margin: 0;
+
+                &::placeholder {
+                    font-size: 20px;
+                }
+            }
+
+            @media only screen and (max-width: 480px) {
+                width: 80%;
+                place-self: center;
+            }
+
+            @media only screen and (max-width: 320px) {
+                &::placeholder {
+                    font-size: 18px;
+                }
             }
         }
 
@@ -87,8 +142,7 @@
         padding-right: 5%;
 
         &-container {
-            width: 65%;
-            height: 65%;
+            width: 80%;
             background-color: coral;
             border-radius: 15px;
 
@@ -98,6 +152,28 @@
                 line-height: 30px;
             }
         }
+
+        @media only screen and (max-width: 768px) {
+            padding: 9px 0;
+            
+            &-container {
+                width: 90%;
+
+                p {
+                    font-size: 20px;
+                    line-height: 26px;
+                }
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            padding: 0 0 30px 0;
+
+            &-container {
+                width: 80%;
+            }
+        }
+
     }
 }
 
@@ -160,5 +236,21 @@
     &__info {
         width: 85%;
         margin-left: 40px;
+    }
+
+    @media only screen and (max-width: 992px) {
+        width: 33%;
+    }
+
+    @media only screen and (min-width: 481px) and (max-width: 768px) {
+        width: 50%;
+
+        &__info {
+            margin-left: 30px;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        width: 100%;
     }
 }

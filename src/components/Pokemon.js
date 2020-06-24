@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { fetchInfoPokemon, fetchImage } from '../requests/pokemons';
 import { connect } from 'react-redux';
-import { removeHyphen, formatText, chooseWeaknesses, abbreviateWord } from '../helpers';
+import { Link } from 'react-router-dom';
+import { removeHyphen, formatText, chooseWeaknesses, abbreviateWord, autoScroll } from '../helpers';
 import TagType from './TagType';
 import Image from './Image';
 import Loader from './Loader';
@@ -41,6 +42,7 @@ class Pokemon extends Component {
             const fullImage = await fetchImage(formatedNumber, 'full');
 
             pokemonInfo = {...this.props.selectedPokemon, image: fullImage};
+            autoScroll()
             notFound = false
         } else {
             const selectedPok = pokemons.find(pokemon => {
@@ -52,6 +54,8 @@ class Pokemon extends Component {
             if (selectedPok) {
                 pokemonInfo = await fetchInfoPokemon(selectedPok.entry_number, 'full');
                 notFound = false;
+                
+                autoScroll();
             } else {
                 notFound = true
             }
@@ -171,6 +175,10 @@ class Pokemon extends Component {
                                     className={`pokemon__chart-wrapper background--${types[0].type.name}-polygon`}
                                 />
                             )}
+
+                            <Link to='/' className="pokemon__button-back-container">
+                                <button className={`pokemon__button-back background--${types[0].type.name}`}>Explore More Pokemon</button>
+                            </Link>
                         </div>
                     )
                 }

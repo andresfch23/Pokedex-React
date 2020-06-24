@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { noSpecialCharacters } from '../globalVars';
 import { fetchPokemons } from '../requests/pokemons';
+import { autoScroll } from '../helpers';
 import { addFilteredPokemons, addFilterValue, selectedPokemon } from '../redux/actions/searchInfo';
 import PokemonCard from './PokemonCard';
 import Loader from './Loader';
@@ -12,14 +13,6 @@ class Home extends Component {
         notFound: null,
         loading: false,
         error: ''
-    }
-
-    autoScroll = () => {
-        setTimeout(() => {
-            window.scroll({
-                top: 280
-            });
-        }, 100);
     }
 
     onChangeInput = e => {
@@ -65,7 +58,7 @@ class Home extends Component {
                     fetchPokemons(value, pokemons).then(filteredPokemons => {                
                         this.props.addFilteredPokemons(filteredPokemons);
                         
-                        this.autoScroll();
+                        autoScroll();
                         
                         this.setState(() => {
                             return {

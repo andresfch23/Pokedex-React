@@ -14,13 +14,25 @@
     padding: 0 2% 4% 2%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-rows: auto auto auto auto;
     grid-template-areas:
         ". . title title . ."
         "image image image info info info"
-        "chart chart chart chart chart chart";
+        "chart chart chart chart chart chart"
+        "back back back back back back";
     background-color: white;
     border-radius: 20px;
+
+    @media only screen and (max-width: 768px) {
+        grid-template-rows: auto auto auto auto;
+        grid-template-areas:
+            "title title title title title title"
+            "image image image image image image"
+            "info info info info info info"
+            "chart chart chart chart chart chart"
+            "back back back back back back";
+            margin-bottom: 20px;
+    }
 
     &__title {
         text-align: center;
@@ -29,6 +41,11 @@
         font-size: 48px;
         margin: 80px 0;
         grid-area: title;
+
+        @media only screen and (max-width: 480px) {
+            font-size: 40px;
+            margin: 40px 0;
+        }
 
         &--number {
             color: gray;
@@ -44,6 +61,14 @@
         &-container {
             grid-area: image;
             padding-right: 6%;
+
+            @media only screen and (max-width: 768px) {
+                padding: 0 15%;
+            }
+
+            @media only screen and (max-width: 480px) {
+                padding: 0 10px 20px;
+            }
         }
     }
 
@@ -79,6 +104,10 @@
             padding: 0 6% 4%;
             background-color: cornflowerblue;
             border-radius: 10px;
+
+            @media only screen and (min-width: 480px) and (max-width: 768px) {
+                margin: 50px 20px 0;
+            }
         }
     }
 
@@ -91,17 +120,28 @@
 
     &__types {
         grid-area: type;
+        margin-left: 7px;
 
         &-title {
             @include title-types;
+        }
+
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-left: 20px;
         }
     }
 
     &__weaknesses {
         grid-area: weakness;
+        margin-left: 7px;
+
         &-title {
             @include title-types;
             margin-top: 20px;
+        }
+
+        @media only screen and (min-width: 480px) and (max-width: 768px) {
+            margin-left: 20px;
         }
     }
 
@@ -116,6 +156,11 @@
         text-align: center;
         margin: 84px 0 84px 3%;
 
+        @media only screen and (max-width: 480px) {
+            font-size: 53px;
+            margin: 84px 0 5px;
+        }
+
         & span {
             display: inline-block;
         }
@@ -124,6 +169,10 @@
             animation: spin 1.5s cubic-bezier(.17,.67,.83,.67);
             animation-iteration-count: infinite;
             width: 90px;
+
+            @media only screen and (max-width: 480px) {
+                width: 48px;
+            }
 
             &-container {
                 display: inline-block;
@@ -134,10 +183,20 @@
     &__chart {
         grid-area: chart;
         place-self: center;
-        width: 75%;
+        width: 90%;
         background-color: #E6E6E6;
         margin-top: 80px;
         border-radius: 20px;
+
+        @media only screen and (max-width: 992px) {
+            width: 95%;
+        }
+
+        @media only screen and (max-width: 480px) {
+            width: 100%;
+            height: 100%;
+            margin-top: 50px;
+        }
 
         &-title {
             text-align: center;
@@ -161,6 +220,21 @@
 
         & tspan {
             text-transform: capitalize;
+        }
+    }
+
+    &__button-back {
+        border-radius: 30px;
+        padding: 10px 20px;
+        background-color: #e60000;
+        color: white;
+        font-size: 20px;
+        border: 1px;
+
+        &-container {
+            grid-area: back;
+            place-self: center;
+            margin-top: 50px;
         }
     }
 }
