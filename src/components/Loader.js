@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Image from './Image';
 import pokeBallImage from '../assets/images/pokeball.png';
 
-const Loader = ({ classNameContainerLoader, classNameContainerImage, classNameImage }) => (
+const Loader = ({ classNameContainerLoader = '', classNameContainerImage = '', classNameImage = '' }) => (
     <div className={classNameContainerLoader}>
         <span>
             L
@@ -18,3 +19,9 @@ const Loader = ({ classNameContainerLoader, classNameContainerImage, classNameIm
 );
 
 export default Loader;
+
+Loader.propTypes = {
+    classNameContainerLoader: PropTypes.string,
+    classNameContainerImage: PropTypes.string,
+    classNameImage: PropTypes.string
+}

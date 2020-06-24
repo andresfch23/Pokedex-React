@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TagType = ({ typePok, type }) => {
     return (
@@ -13,3 +14,8 @@ const TagType = ({ typePok, type }) => {
 };  
 
 export default TagType;
+
+TagType.propTypes = {
+    typePok: PropTypes.string,
+    type: PropTypes.string
+};

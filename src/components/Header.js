@@ -1,9 +1,8 @@
 import React from 'react';
+import Image from './Image';
 import PokemonLogo from '../assets/images/pok-logo.png';
 import { headerImages } from '../assets/header-images';
-import Image from './Image';
-
-const positionImages = ['left', 'mid-left', 'mid-right', 'right'];
+import { positionImages } from '../globalVars';
 
 const Header = () => (
     <div className="header">

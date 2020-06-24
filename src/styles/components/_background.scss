@@ -1,248 +1,250 @@
+@import '../base/vars';
+
 .background {
     &--normal {
-        background-color: hsl(0, 0%, 65%);
+        background-color: $normal;
         &-polygon {
             & polygon {
                 stroke: #A6A6D0;
-                fill: hsl(0, 0%, 65%);
-                fill-opacity: 0.6;
+                fill: $normal;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--fighting {
-        background-color: #d56723;
+        background-color: $fighting;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #D5676D;
-                fill: #d56723;
-                fill-opacity: 0.6;
+                fill: $fighting;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--flying {
-        background: linear-gradient(180deg, #3dc7ef 50%, #a6a6a6 61%);
+        background: linear-gradient(180deg, $flying-blue 50%, #a6a6a6 61%);
 
         &-polygon {
             & polygon {
-                stroke: #3dc7ef;
-                fill: #3dc7ef;
-                fill-opacity: 0.6;
+                stroke: $flying-blue;
+                fill: $flying-blue;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--poison {
-        background-color: #b97fc9;
+        background-color: $poison;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #B97FFF;
-                fill: #b97fc9;
-                fill-opacity: 0.6;
+                fill: $poison;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--ground {
-        background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+        background: linear-gradient(180deg, $ground-yellow 50%, #ab9842 50%);
 
         &-polygon {
             & polygon {
-                stroke: #f7de3f;
-                fill: #f7de3f;
-                fill-opacity: 0.6;
+                stroke: $ground-yellow;
+                fill: $ground-yellow;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--rock {
-        background-color: #a38c21;
+        background-color: $rock;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #A38C98;
-                fill: #a38c21;
-                fill-opacity: 0.6;
+                fill: $rock;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--bug {
-        background-color: #729f3f;
+        background-color: $bug;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #729F7C;
-                fill: #729f3f;
-                fill-opacity: 0.6;
+                fill: $bug;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--ghost {
-        background-color: #7b62a3;
+        background-color: $ghost;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #7B62FF;
-                fill: #7b62a3;
-                fill-opacity: 0.6;
+                fill: $ghost;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--steel {
-        background-color: #9eb7b8;
+        background-color: $steel;
 
         &-polygon {
             & polygon {
                 stroke: #9EB7DC;
-                fill: #9eb7b8;
-                fill-opacity: 0.6;
+                fill: $steel;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--fire {
-        background-color: #fd7d24;
+        background-color: $fire;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #FD7D83;
-                fill: #fd7d24;
-                fill-opacity: 0.6;
+                fill: $fire;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--water {
-        background-color: #4592c4;
+        background-color: $water;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #4592FF;
-                fill: #4592c4;
-                fill-opacity: 0.6;
+                fill: $water;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--grass {
-        background-color: #9bcc50;
+        background-color: $grass;
 
         &-polygon {
             & polygon {
-                stroke: #9bcc50;
-                fill: #9bcc50;
-                fill-opacity: 0.6;
+                stroke: $grass;
+                fill: $grass;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--electric {
-        background-color: #eed535;
+        background-color: $electric;
 
         &-polygon {
             & polygon {
-                stroke: #EED59C;
-                fill: #eed535;
-                fill-opacity: 0.6;
+                stroke: #cfb300;
+                fill: $electric;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--psychic {
-        background-color: #f366b9;
+        background-color: $psychic;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #F366FF;
-                fill: #f366b9;
-                fill-opacity: 0.6;
+                fill: $psychic;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--ice {
-        background-color: #51c4e7;
+        background-color: $ice;
 
         &-polygon {
             & polygon {
                 stroke: #51C4FF;
-                fill: #51c4e7;
-                fill-opacity: 0.6;
+                fill: $ice;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--dragon {
-        background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+        background: linear-gradient(180deg, #53a4cf 50%, $dragon-orange 50%);
 
         &-polygon {
             & polygon {
                 stroke: #F16E77;
-                fill: #f16e57;
-                fill-opacity: 0.6;
+                fill: $dragon-orange;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--dark {
-        background-color: #707070;
+        background-color: $dark;
         color: white;
         
         &-polygon {
             & polygon {
                 stroke: #70703A;
-                fill: #707070;
+                fill: $dark;
                 fill-opacity: 0.7;
             }
         }
     }
 
     &--fairy {
-        background-color: #fdb9e9;
+        background-color: $fairy;
 
         &-polygon {
             & polygon {
-                stroke: #FDB9FF;
-                fill: #fdb9e9;
-                fill-opacity: 0.6;
+                stroke: #e998ec;
+                fill: $fairy;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--unknown {
-        background-color: hsl(0, 0%, 65%);
+        background-color: $normal;
 
         &-polygon {
             & polygon {
-                stroke: hsl(0, 0%, 65%);
-                fill: hsl(0, 0%, 65%);
-                fill-opacity: 0.6;
+                stroke: $normal;
+                fill: $normal;
+                fill-opacity: $background-opacity;
             }
         }
     }
 
     &--shadow {
-        background-color: hsl(0, 0%, 65%);
+        background-color: $normal;
 
         &-polygon {
             & polygon {
-                stroke: hsl(0, 0%, 65%);
-                fill: hsl(0, 0%, 65%);
-                fill-opacity: 0.6;
+                stroke: $normal;
+                fill: $normal;
+                fill-opacity: $background-opacity;
             }
         }
     }

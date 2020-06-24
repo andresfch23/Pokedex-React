@@ -63,7 +63,7 @@
             padding-right: 6%;
 
             @media only screen and (max-width: 768px) {
-                padding: 0 15%;
+                padding: 0 10%;
             }
 
             @media only screen and (max-width: 480px) {
@@ -156,6 +156,11 @@
         text-align: center;
         margin: 84px 0 84px 3%;
 
+        @media only screen and (max-width: 992px) {
+            font-size: 80px;
+            margin: 84px 0 5px;
+        }
+
         @media only screen and (max-width: 480px) {
             font-size: 53px;
             margin: 84px 0 5px;
@@ -169,6 +174,10 @@
             animation: spin 1.5s cubic-bezier(.17,.67,.83,.67);
             animation-iteration-count: infinite;
             width: 90px;
+
+            @media only screen and (max-width: 992px) {
+                width: 70px;
+            }
 
             @media only screen and (max-width: 480px) {
                 width: 48px;
@@ -230,6 +239,7 @@
         color: white;
         font-size: 20px;
         border: 1px;
+        cursor: pointer;
 
         &-container {
             grid-area: back;

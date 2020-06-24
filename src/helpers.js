@@ -41,20 +41,10 @@ export const formatNumber = num => {
     } else if (num < 100) {
         numPok = `0${num}`
     } else {
-        numPok = num;
+        numPok = `${num}`;
     }
 
     return numPok;
-}
-
-export const filterExistentPokemons = (pokemons, text) => {
-    const filteredPokemons = pokemons.filter(pokemon => {
-        const { name } = pokemon;
-
-        if (name.includes(text.toLowerCase())) {
-            return true;
-        }
-    });
 }
 
 export const abbreviateWord = text => {

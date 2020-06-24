@@ -15,7 +15,7 @@
     justify-items: stretch;
     padding-bottom: 40px;
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 992px) {
         grid-template-areas:
             "left left left left right right right right"
             "loader loader loader loader loader loader loader loader"

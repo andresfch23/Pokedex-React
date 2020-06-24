@@ -1,13 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Image from './Image';
 import sadPikachu from '../assets/images/sad.png';
 
-const NotFound = ({ type='Page'  }) => (
+const NotFound = ({ type = 'Page'  }) => (
     <div className='not-found'>
-        {/* <Image 
-            src={sadPikachu}
-        /> */}
         <h2>SORRY</h2>
 
         <span>
@@ -30,3 +28,7 @@ const NotFound = ({ type='Page'  }) => (
 );
 
 export default NotFound;
+
+NotFound.propTypes = {
+    type: PropTypes.string
+}

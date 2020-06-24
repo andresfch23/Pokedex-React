@@ -19,3 +19,5 @@ export const actionTypesFilterInfo = {
     ADD_FILTER_VALUE: 'ADD_FILTER_VALUE',
     ADD_SELECTED_POKEMON: 'ADD_SELECTED_POKEMON'
 };
+
+export const positionImages = ['left', 'mid-left', 'mid-right', 'right'];

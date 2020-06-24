@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import {
     Radar,
@@ -28,3 +29,9 @@ class Chart extends Component {
 }
 
 export default Chart;
+
+Chart.propTypes = {
+    data: PropTypes.array,
+    className: PropTypes.string,
+    name: PropTypes.string
+}

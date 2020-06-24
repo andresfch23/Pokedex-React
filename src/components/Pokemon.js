@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { fetchInfoPokemon, fetchImage } from '../requests/pokemons';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { removeHyphen, formatText, chooseWeaknesses, abbreviateWord, autoScroll } from '../helpers';
-import TagType from './TagType';
-import Image from './Image';
+
+// Components
 import Loader from './Loader';
 import NotFound from './NotFound';
-import Chart from './Chart';
+import PokemonInfo from './PokemonInfo';
+
+// Request and helpers
+import { fetchInfoPokemon, fetchImage } from '../requests/pokemons';
+import { abbreviateWord, autoScroll } from '../helpers';
 
 class Pokemon extends Component {
     state = {
@@ -16,6 +18,10 @@ class Pokemon extends Component {
     }
 
     componentDidMount() {
+        // Render the info of the pokemon if it exist (when the user comes from home clicking a pokemon),
+        // or if doesn't exist a selectedPokemon and the list of all Pokemon exists, the function is
+        // executed getting the param of the url and fetching the info 
+
         if (Object.entries(this.props.selectedPokemon).length > 0) {
             this.getPokemonInfo(true);
         } else if(Object.entries(this.props.selectedPokemon).length === 0 && this.props.pokemons.length > 0) {
@@ -24,6 +30,8 @@ class Pokemon extends Component {
     }
 
     componentDidUpdate(prevProps) {
+        // Executing the function when the list of pokemon is ready
+
         if ((prevProps.pokemons.length === 0 &&
             this.props.pokemons.length > 0) &&
             Object.entries(this.props.selectedPokemon).length === 0
@@ -86,17 +94,7 @@ class Pokemon extends Component {
     }
 
     render() {
-        const {
-            species,
-            image,
-            formatedNumber,
-            complementInfo,
-            abilities,
-            types,
-            stats,
-            height,
-            weight
-        } = this.state.pokemonInfo;
+        const { stats } = this.state.pokemonInfo;
 
         const finalStats = this.finalStats(stats);
 
@@ -104,86 +102,27 @@ class Pokemon extends Component {
             <div>
                 {
                     (Object.entries((this.state.pokemonInfo).length === 0) && this.state.notFound) ?
-                    (<NotFound type='Pokemon' />) :
+                        (
+                            <NotFound type='Pokemon' />
+                        ) :
                     Object.entries(this.state.pokemonInfo).length === 0 ? 
-                    (
-                        <Loader 
-                            classNameContainerImage='pokemon__loading-image-container'
-                            classNameContainerLoader='pokemon__loading'
-                            classNameImage='pokemon__loading-image'
-                        />
-                    ) :
-                    (
-                        <div className='pokemon'>
-                            <h1 className='pokemon__title'>
-                                {removeHyphen(species.name)} <span className='pokemon__title--number'>{`#${formatedNumber}`}</span>
-                            </h1>
-                            <Image
-                                src={image}
-                                alt={species.name}
-                                optionalClassImage='pokemon__image'
-                                optionalClassContainer='pokemon__image-container'
+                        (
+                            <Loader 
+                                classNameContainerImage='pokemon__loading-image-container'
+                                classNameContainerLoader='pokemon__loading'
+                                classNameImage='pokemon__loading-image'
                             />
-                            <div className='pokemon__info'>
-
-                                <div className={`pokemon__info-container ${types[0] ? `background--${types[0].type.name}` : ''}`}>    
-                                    <p className='pokemon__description'>{formatText(complementInfo, species.name)}</p>
-
-                                    {abilities.length > 0 && (
-                                        <div className='pokemon__info-item'>
-                                            <h2 className='pokemon__info-title'>Abilities</h2>
-                                            {abilities.map(({ ability }, idx) => {
-                                                    return (<span className='pokemon__ability' key={idx}>{removeHyphen(ability.name)}</span>)  
-                                            })}
-                                        </div>
-                                        )
-                                    }
-
-                                    <div className="pokemon__info-item">
-                                        <h2 className='pokemon__info-title'>Weight</h2>
-                                        {weight && <span>{weight / 10} kg</span>}
-                                    </div>
-
-                                    <div className="pokemon__info-item">
-                                        <h2 className='pokemon__info-title'>Height</h2>
-                                        {height && <span>{height * 10} cm</span>}
-                                    </div>
-                                </div>
-                                
-                                <div className="pokemon__types">
-                                    <h2 className="pokemon__types-title">Type</h2>
-                                    {
-                                        types.map(({ type: { name } }) => {
-                                            return (<TagType typePok={name} key={name} type="detail" />)
-                                        })
-                                    }
-                                </div>
-                                
-                                <div className="pokemon__weaknesses">
-                                    <h2 className="pokemon__weaknesses-title">Weaknesses</h2>
-                                    {chooseWeaknesses(types, this.props.listTypes).map(weakness => {
-                                        return (<TagType typePok={weakness} key={weakness} type="detail" />)
-                                    })}
-                                </div>
-
-                            </div>
-
-                            {finalStats && (
-                                <Chart
-                                    data={finalStats}
-                                    name={name}
-                                    className={`pokemon__chart-wrapper background--${types[0].type.name}-polygon`}
-                                />
-                            )}
-
-                            <Link to='/' className="pokemon__button-back-container">
-                                <button className={`pokemon__button-back background--${types[0].type.name}`}>Explore More Pokemon</button>
-                            </Link>
-                        </div>
+                        ) :
+                    (
+                        <PokemonInfo 
+                            {...this.state.pokemonInfo}
+                            finalStats={finalStats}
+                            listTypes={this.props.listTypes}
+                        />
                     )
                 }
             </div>
-        );
+        )
     }
 }
 
@@ -194,3 +133,10 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Pokemon);
+
+Pokemon.propTypes = {
+    selectedPokemon: PropTypes.object,
+    pokemons: PropTypes.array,
+    match: PropTypes.object,
+    listTypes: PropTypes.array
+}

@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
+// Components
+import PokemonCard from './PokemonCard';
+import Loader from './Loader';
+
+// Other stuff
 import { noSpecialCharacters } from '../globalVars';
 import { fetchPokemons } from '../requests/pokemons';
 import { autoScroll } from '../helpers';
 import { addFilteredPokemons, addFilterValue, selectedPokemon } from '../redux/actions/searchInfo';
-import PokemonCard from './PokemonCard';
-import Loader from './Loader';
 
 class Home extends Component {
     state = {
@@ -36,10 +41,13 @@ class Home extends Component {
                 }));
             }
             
+
+            // Delaying the execution of the function qhen the user type a letter
             clearTimeout(this.inputTimer);
             
             this.inputTimer = setTimeout(() => {
 
+                // Searching a pokemon only when the user writte 3 or more letters
                 if (value.length <= 2) {
                     this.props.addFilteredPokemons([]);
 
@@ -86,13 +94,13 @@ class Home extends Component {
     };
 
     render() {
-        const classNamecont =
+        const classNameContainerState =
             this.state.searchVal.length <= 2 ?
-            'pokemons-container-empty' :
+                'pokemons-container-empty' :
             this.props.filteredPokemons.length > 0 ?
-            'pokemons-container-ready':
+                'pokemons-container-ready':
             this.state.notFound &&
-            'pokemons-container-notFound';
+                'pokemons-container-notFound';
 
         return (
             <div className="home">
@@ -120,7 +128,7 @@ class Home extends Component {
                     />
                 )}
 
-                <div className={`pokemons-container ${classNamecont}`}>
+                <div className={`pokemons-container ${classNameContainerState}`}>
 
                     {this.props.filteredPokemons.length > 0 ? (
                         <div>
@@ -129,8 +137,13 @@ class Home extends Component {
                             ))}
                         </div>
                     ) : this.state.notFound ? (
-                        <span className="pokemons__notFound-text">We couldn´t find coincidences for a Pokemon with this search: {`'${this.state.searchVal}'`}</span>
-                    ) : this.state.error && <span>An error ocurred</span>}
+                        <span className="pokemons__notFound-text">
+                            We couldn´t find coincidences for a Pokemon with this search: {`'${this.state.searchVal}'`}
+                        </span>
+                    ) : this.state.error && (
+                        <span>An error ocurred</span>
+                    )}
+                    
                 </div>
             </div>
         );
@@ -150,3 +163,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
+
+Home.propTypes = {
+    filterValue: PropTypes.string,
+    pokemons: PropTypes.array,
+    addFilterValue: PropTypes.func,
+    addFilteredPokemons: PropTypes.func,
+    filteredPokemons: PropTypes.array,
+    selectedPokemon: PropTypes.func
+};
