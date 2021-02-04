@@ -11,7 +11,7 @@ export const addPokemons = () => {
     return dispatch => {
         dispatch(addPokemonsStarted());
 
-        fetchInitialInfo().then(res => {
+        return fetchInitialInfo().then(res => {
             dispatch(addPokemonsSuccess(res));
         })
         .catch(err => {
@@ -20,7 +20,7 @@ export const addPokemons = () => {
     }
 }
 
-const addPokemonsSuccess = (pokemons) => ({
+const addPokemonsSuccess = pokemons => ({
     type: ADD_POKEMONS_SUCCESS,
     pokemons
 });

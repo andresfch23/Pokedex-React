@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Components
 import PokemonCard from './PokemonCard';
@@ -12,157 +12,129 @@ import { fetchPokemons } from '../requests/pokemons';
 import { autoScroll } from '../helpers';
 import { addFilteredPokemons, addFilterValue, selectedPokemon } from '../redux/actions/searchInfo';
 
-class Home extends Component {
-    state = {
-        searchVal: this.props.filterValue || '',
-        notFound: null,
-        loading: false,
-        error: ''
-    }
+let inputTimer;
 
-    onChangeInput = e => {
+const Home = () => {
+    // Props of Redux store
+    const pokemons = useSelector(state => state.pokemons.listPokemons);
+    const filterValue = useSelector(state => state.searchInfo.filterValue);
+    const filteredPokemons = useSelector(state => state.searchInfo.filteredPokemons.pokemons);
+    const dispatch = useDispatch();
+
+    // State 
+    const [searchVal, setSearchVal] = useState(filterValue || '');
+    const [notFound, setNotFound] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    const classNameContainerState =
+        searchVal.length <= 2 ?
+            'pokemons-container-empty' :
+        filteredPokemons.length > 0 ?
+            'pokemons-container-ready':
+        notFound &&
+            'pokemons-container-notFound';
+
+    const onChangeInput = e => {
         const value = e.target.value.trim().replace(noSpecialCharacters, '');
-        const previousVal = this.state.searchVal;
-        const pokemons = this.props.pokemons;
+        const previousVal = searchVal;
         const duration = 500;
-
+    
         if (value !== previousVal) {
             
-            this.setState(() => ({
-                searchVal: value,
-                notFound: false
-            }));
+            setSearchVal(value);
+            setNotFound(false);
             
-            this.props.addFilterValue(value);
-
+            dispatch(addFilterValue(value));
+    
             if (value.length >= 3) {
-                this.setState(() => ({
-                    loading: value
-                }));
+                setLoading(true);
             }
             
+            // Delaying the execution of the function when the user type a letter            
 
-            // Delaying the execution of the function qhen the user type a letter
-            clearTimeout(this.inputTimer);
+            clearTimeout(inputTimer);
             
-            this.inputTimer = setTimeout(() => {
-
+            inputTimer = setTimeout(() => {
+    
                 // Searching a pokemon only when the user writte 3 or more letters
                 if (value.length <= 2) {
-                    this.props.addFilteredPokemons([]);
-
-                    this.setState(() => {
-                        return {
-                            loading: false
-
-                        }
-                    });
+                    dispatch(addFilteredPokemons([]));
+    
+                    setLoading(false);
                 } else {
-                    this.setState(() => ({
-                        loading: true,
-                    }));
-        
-                    
+                    setLoading(true)
                     fetchPokemons(value, pokemons).then(filteredPokemons => {                
-                        this.props.addFilteredPokemons(filteredPokemons);
+                        dispatch(addFilteredPokemons(filteredPokemons));
                         
                         autoScroll();
                         
-                        this.setState(() => {
-                            return {
-                                loading: false,
-                                error: '',
-                                notFound: filteredPokemons.length > 0 ? false : true
-                            }
-                        });
+                        setError('');
+                        setNotFound(filteredPokemons.length > 0 ? false : true);
+                        setLoading(false);
+
                     }).catch(error => {
-                        this.setState(() => {
-                            return {
-                                error
-                            }
-                        })
+                        setError(error);
                     });
-                    
                 }
     
             }, duration);
+
         }
     }
 
-    onClickPokemon = (info) => {
-        this.props.selectedPokemon(info);
+    const onClickPokemon = (info) => {
+        dispatch(selectedPokemon(info));
     };
 
-    render() {
-        const classNameContainerState =
-            this.state.searchVal.length <= 2 ?
-                'pokemons-container-empty' :
-            this.props.filteredPokemons.length > 0 ?
-                'pokemons-container-ready':
-            this.state.notFound &&
-                'pokemons-container-notFound';
-
-        return (
-            <div className="home">
-                <div className="home__search">
-                        <input
-                            type='text'
-                            placeholder="NAME OR NUMBER"
-                            value={this.state.searchVal}
-                            onChange={this.onChangeInput}
-                            className='home__search-input'
-                        />
-                </div>
-
-                <div className="home__description">
-                    <div className="home__description-container">
-                        <p>Search the pokemon by name or number. You must to writte at least 3 characters to search a pokemon. Example: {`'bul'`} or 001</p>
-                    </div>
-                </div>
-
-                {this.state.loading && (
-                    <Loader 
-                        classNameContainerImage='home-loading-image-container'
-                        classNameContainerLoader='home-loading'
-                        classNameImage='home-loading-image'
+    return (
+        <div className="home">
+            <div className="home__search">
+                    <input
+                        type='text'
+                        placeholder="NAME OR NUMBER"
+                        value={searchVal}
+                        onChange={onChangeInput}
+                        className='home__search-input'
                     />
-                )}
+            </div>
 
-                <div className={`pokemons-container ${classNameContainerState}`}>
-
-                    {this.props.filteredPokemons.length > 0 ? (
-                        <div>
-                            {this.props.filteredPokemons.map((pokemon) => (
-                                <PokemonCard key={pokemon.id} info={pokemon} onClickPokemon={this.onClickPokemon} />
-                            ))}
-                        </div>
-                    ) : this.state.notFound ? (
-                        <span className="pokemons__notFound-text">
-                            We couldn´t find coincidences for a Pokemon with this search: {`'${this.state.searchVal}'`}
-                        </span>
-                    ) : this.state.error && (
-                        <span>An error ocurred</span>
-                    )}
-                    
+            <div className="home__description">
+                <div className="home__description-container">
+                    <p>Search the pokemon by name or number. You must to writte at least 3 characters to search a pokemon. Example: {`'bul'`} or 001</p>
                 </div>
             </div>
-        );
-    }
+
+            {loading && (
+                <Loader 
+                    classNameContainerImage='home-loading-image-container'
+                    classNameContainerLoader='home-loading'
+                    classNameImage='home-loading-image'
+                />
+            )}
+
+            <div className={`pokemons-container ${classNameContainerState}`}>
+
+                {filteredPokemons.length > 0 ? (
+                    <div>
+                        {filteredPokemons.map((pokemon) => (
+                            <PokemonCard key={pokemon.id} info={pokemon} onClickPokemon={onClickPokemon} />
+                        ))}
+                    </div>
+                ) : notFound ? (
+                    <span className="pokemons__notFound-text">
+                        We couldn´t find coincidences for a Pokemon with this search: {`'${searchVal}'`}
+                    </span>
+                ) : error && (
+                    <span>An error ocurred</span>
+                )}
+                
+            </div>
+        </div>
+    );
 }
 
-const mapStateToProps = state => ({
-    pokemons: state.pokemons.listPokemons,
-    filterValue: state.searchInfo.filterValue,
-    filteredPokemons: state.searchInfo.filteredPokemons.pokemons
-});
-
-const mapDispatchToProps = dispatch => ({
-    addFilteredPokemons: filteredPokemons => dispatch(addFilteredPokemons(filteredPokemons)),
-    addFilterValue: filterValue => dispatch(addFilterValue(filterValue)),
-    selectedPokemon: pokemon => dispatch(selectedPokemon(pokemon))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
 
 Home.propTypes = {
     filterValue: PropTypes.string,

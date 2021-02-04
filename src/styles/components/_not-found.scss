@@ -5,7 +5,7 @@
 
     & h2 {
         margin: 40px 0 18px 0;
-        color: #e60000;
+        color: $red-pokemon;
     }
 
     & span {
@@ -34,13 +34,13 @@
     &__button {
         border-radius: 30px;
         padding: 5px 20px;
-        background-color: #e60000;
+        background-color: $red-pokemon;
         color: white;
         font-size: 25px;
         cursor: pointer;
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: $m-brk) {
         & h2 {
             margin: 40px 0;
         }
@@ -61,7 +61,7 @@
         }
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $s-brk) {
         font-size: 35px;
 
         & h2 {

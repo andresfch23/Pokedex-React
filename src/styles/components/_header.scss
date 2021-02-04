@@ -1,3 +1,5 @@
+@import '../base/vars';
+
 .header {
     display: grid;
     grid-template-rows: 200px;
@@ -7,7 +9,7 @@
     align-items: center;
     background: black;
 
-    @media only screen and (min-width: 480px) and (max-width: 768px) {
+    @media only screen and (min-width: $s-brk) and (max-width: $m-brk) {
         grid-template-rows: 200px;
         grid-template-columns: 1.5fr 1.5fr 2fr 1.5fr 1.5fr;
         grid-template-areas: "left-mid-img left-mid-img center-img right-mid-img right-mid-img";
@@ -40,7 +42,7 @@
         justify-items: center;
         padding: 4px 0;
 
-        @media only screen and (max-width: 480px) {
+        @media only screen and (max-width: $s-brk) {
             display: none;
 
             &--center {
@@ -48,7 +50,7 @@
             }
         }
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $m-brk) {
             width: 88%;
 
             &--left {

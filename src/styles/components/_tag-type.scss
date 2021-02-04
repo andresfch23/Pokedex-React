@@ -1,3 +1,5 @@
+@import '../base/vars';
+
 .type {
     &__container {
 
@@ -5,7 +7,7 @@
             display: inline-block;
             width: 40%;
 
-            @media only screen and (min-width: 481px) and (max-width: 992px) {
+            @media only screen and (min-width: $s-brk) and (max-width: $l-brk) {
                 width: 44%;
             }
         }
@@ -15,7 +17,7 @@
             width: 25%;
             margin-bottom: 2%;
 
-            @media only screen and (max-width: 480px) {
+            @media only screen and (max-width: $s-brk) {
                 width: 33%;
             }
         }
