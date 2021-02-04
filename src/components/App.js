@@ -36,7 +36,7 @@ export const App = () => {
 }
 
 export default App;
-
+console.log('NOTHING')
 App.propTypes = {
     addPokemons: PropTypes.func,
     addTypes: PropTypes.func
