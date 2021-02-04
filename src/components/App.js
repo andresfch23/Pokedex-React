@@ -12,7 +12,7 @@ import NotFound from '../components/NotFound';
 // Redux stuff
 import { addPokemons } from '../redux/actions/pokemons';
 import { addTypes } from '../redux/actions/types';
-
+console.log('A DIFFERENT MESSAGE');
 export const App = () => {
     const dispatch = useDispatch();
     
