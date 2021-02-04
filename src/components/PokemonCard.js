@@ -2,16 +2,13 @@ import React from 'react';
 import Image from './Image';
 import TagType from './TagType';
 import { removeHyphen } from '../helpers';
+import PropTypes from 'prop-types';
 
 const PokemonCard = ({ info, onClickPokemon }) => {
     const { 
         species: {
             name
         },
-        sprites: {
-            front_default
-        },
-        id,
         types,
         image,
         formatedNumber
@@ -42,3 +39,14 @@ const PokemonCard = ({ info, onClickPokemon }) => {
 };
 
 export default PokemonCard;
+
+PokemonCard.propTypes = {
+    info: PropTypes.shape({
+       species: PropTypes.shape({ name: PropTypes.string }),
+       types: PropTypes.arrayOf(PropTypes.object),
+       image: PropTypes.string,
+       formatedNumber: PropTypes.string
+    }),
+    onClickPokemon: PropTypes.func,
+
+}

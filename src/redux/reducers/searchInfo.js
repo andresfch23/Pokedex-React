@@ -9,9 +9,7 @@ const {
 const initialState = {
     filterValue: '',
     filteredPokemons: {
-        loading: false,
-        pokemons: [],
-        error: null
+        pokemons: []
     },
     selectedPokemon: {}
 }
@@ -22,8 +20,6 @@ const searchInfoReducer = (state = initialState, action) => {
             return {
                 ...state,
                 filteredPokemons: {
-                    ...state.filteredPokemons,
-                    loading: false,
                     pokemons: action.filteredPokemons
                 }
             }

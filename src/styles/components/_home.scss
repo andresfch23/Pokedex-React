@@ -1,7 +1,4 @@
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(720deg); }
-}
+@import '../base/vars';
 
 .home {
     display: grid;
@@ -15,14 +12,14 @@
     justify-items: stretch;
     padding-bottom: 40px;
 
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: $l-brk) {
         grid-template-areas:
             "left left left left right right right right"
             "loader loader loader loader loader loader loader loader"
             ". cards cards cards cards cards cards .";
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $s-brk) {
         grid-template-rows: 100px auto 120px auto;
         grid-template-areas:
         "left left left left left left left left"
@@ -39,7 +36,7 @@
         text-align: center;
         margin: 20px 0px 0 40px;
 
-        @media only screen and (max-width: 480px) {
+        @media only screen and (max-width: $s-brk) {
            font-size: 50px;
            margin: 0 0 0 20px;
 
@@ -57,7 +54,7 @@
             animation-iteration-count: infinite;
             width: 66px;
 
-            @media only screen and (max-width: 320px) {
+            @media only screen and (max-width: $xs-brk) {
                 width: 45px;
             }
 
@@ -93,11 +90,11 @@
                 font-size: 23px;
             }
 
-            @media only screen and (max-width: 992px) {
+            @media only screen and (max-width: $l-brk) {
                 width: 80%;
             }
 
-            @media only screen and (max-width: 768px) {
+            @media only screen and (max-width: $m-brk) {
                 width: 90%;
                 margin: 0;
 
@@ -106,12 +103,12 @@
                 }
             }
 
-            @media only screen and (max-width: 480px) {
+            @media only screen and (max-width: $s-brk) {
                 width: 80%;
                 place-self: center;
             }
 
-            @media only screen and (max-width: 320px) {
+            @media only screen and (max-width: $xs-brk) {
                 &::placeholder {
                     font-size: 18px;
                 }
@@ -153,7 +150,7 @@
             }
         }
 
-        @media only screen and (max-width: 768px) {
+        @media only screen and (max-width: $m-brk) {
             padding: 9px 0;
             
             &-container {
@@ -166,7 +163,7 @@
             }
         }
 
-        @media only screen and (max-width: 480px) {
+        @media only screen and (max-width: $s-brk) {
             padding: 0 0 30px 0;
 
             &-container {
@@ -238,11 +235,11 @@
         margin-left: 40px;
     }
 
-    @media only screen and (max-width: 992px) {
+    @media only screen and (max-width: $l-brk) {
         width: 33%;
     }
 
-    @media only screen and (min-width: 481px) and (max-width: 768px) {
+    @media only screen and (min-width: 481px) and (max-width: $m-brk) {
         width: 50%;
 
         &__info {
@@ -250,7 +247,7 @@
         }
     }
 
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: $s-brk) {
         width: 100%;
     }
 }

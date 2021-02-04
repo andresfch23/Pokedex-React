@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Components
@@ -13,32 +13,27 @@ import NotFound from '../components/NotFound';
 import { addPokemons } from '../redux/actions/pokemons';
 import { addTypes } from '../redux/actions/types';
 
-class App extends React.Component {
-    componentDidMount() {
-        this.props.addPokemons();
-        this.props.addTypes();
-    }
-
-    render() {
-        return (
-            <div>
-                <Header />
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route exact path="/pokemon/:id" component={Pokemon} />
-                    <Route component={NotFound} />
-                </Switch>
-            </div>
-        )
-    }
+export const App = () => {
+    const dispatch = useDispatch();
+    
+    useEffect(() => {
+        dispatch(addPokemons());
+        dispatch(addTypes());
+    }, []);
+    
+    return (
+        <div>
+            <Header />
+            <Switch>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/pokemon/:id" component={Pokemon} />
+                <Route component={NotFound} />
+            </Switch>
+        </div>
+    )
 }
 
-const mapDispatchToProps = dispatch => ({
-    addPokemons: () => dispatch(addPokemons()),
-    addTypes: () => dispatch(addTypes())
-});
-
-export default connect(undefined, mapDispatchToProps)(App);
+export default App;
 
 App.propTypes = {
     addPokemons: PropTypes.func,
