@@ -20,6 +20,8 @@ export const App = () => {
         dispatch(addPokemons());
         dispatch(addTypes());
     }, []);
+
+    console.log("TESTING SOMETHING");
     
     return (
         <div>
